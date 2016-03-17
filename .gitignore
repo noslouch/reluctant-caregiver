@@ -1,0 +1,20 @@
+.DS_Store
+*~
+*.swp
+
+# secrets in here
+craft/config/db.php
+craft/config/license.key
+craft/storage
+
+# deps
+node_modules/
+bower_components/
+
+# dist
+public/static/images
+
+# dev environment stuff
+.ruby-version
+.ruby-gemset
+.sass-cache/
