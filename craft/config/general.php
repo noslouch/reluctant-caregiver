@@ -8,5 +8,22 @@
  */
 
 return array(
+    '*'     => array(
+      'omitScriptNameInUrls'  => true
+    ),
 
+    '.dev'  => array(
+      'devMode' => true,
+      'environmentVariables' => array(
+        'basePath'  => '/Users/noSlouch/Code/websites/caregiver/public/',
+        'baseUrl'   => 'http://craft.dev/'
+      )
+    ),
+
+    '.org'  => array(
+      'environmentVariables' => array(
+        'basePath'  => '/home/brianwhitton/thereluctantcaregiver.org/public/',
+        'baseUrl'   => 'http://http://thereluctantcaregiver.org/'
+      )
+    )
 );
