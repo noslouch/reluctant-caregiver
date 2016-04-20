@@ -19,7 +19,7 @@ gulp.task('styles', () => {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'))
+    .pipe(gulp.dest('.tmp/css'))
     .pipe(reload({stream: true}));
 });
 
@@ -52,9 +52,9 @@ gulp.task('lint', lint('source/js/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('minify', ['styles', 'scripts'], () => {
-  return gulp.src('.tmp')
-    .pipe($.if('*.js', $.uglify()))
-    .pipe($.if('*.css', $.cssnano()))
+  return gulp.src(['.tmp/**/*.css', '.tmp/**/.js'])
+    .pipe($.if('**/*.js', $.uglify()))
+    .pipe($.if('**/*.css', $.cssnano()))
     .pipe(gulp.dest('public/dist'));
 });
 
@@ -106,9 +106,9 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
     '.tmp/fonts/**/*'
   ]).on('change', reload);
 
-  gulp.watch('app/styles/**/*.scss', ['styles']);
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
-  gulp.watch('app/fonts/**/*', ['fonts']);
+  gulp.watch('source/sass/**/*.scss', ['styles']);
+  gulp.watch('source/js/**/*.js', ['scripts']);
+  gulp.watch('source/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
