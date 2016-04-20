@@ -12,9 +12,10 @@ node_modules/
 bower_components/
 
 # dist
-public/static/images
+public/dist
 
 # dev environment stuff
 .ruby-version
 .ruby-gemset
 .sass-cache/
+.tmp
