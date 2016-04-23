@@ -15,7 +15,8 @@
 	<meta charset="utf-8" />
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
 	<link rel="home" href="{{ siteUrl }}" />
-  <link rel="stylesheet" href="/dist/css/caregiver.css">
+  <link rel="stylesheet" href="/dist/vendor.min.css">
+  <link rel="stylesheet" href="/dist/caregiver.css">
 
 </head>
 
@@ -42,5 +43,7 @@
 			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://craftcms.com">Craft</a>
 		</footer>
 	</div>
+  <script src="/dist/vendor.min.js"></script>
+  <script src="/dist/scripts.min.js"></script>
 </body>
 </html>
