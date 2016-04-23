@@ -11,17 +11,50 @@
  #}
 
 {% extends "_layout" %}
-{% set title = "News" %}
+{% set title = "Caregivers" %}
 
 {% block content %}
-	<h1>News</h1>
+  <h1>{{title}}</h1>
 
-	{% for entry in craft.entries.section('news').find() %}
-		<article>
+  <button class="filter" data-filter="all">Show All</button>
+  {% set caregivers = craft.entries.section('caregivers').with('caregiverThumbnail', 'diseaseTag', 'insightTag', 'relationshipTag') %}
+  {% set allTags = craft.tags.relatedTo(caregivers) %}
+  <h2>dieases</h2>
+  <ul>
+  {% for tag in allTags.group('diseases') %}
+    <li><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
+  {% endfor %}
+  </ul>
+  <h2>insights</h2>
+  <ul>
+  {% for tag in allTags.group('insights') %}
+    <li><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
+  {% endfor %}
+  </ul>
+  <h2>relationships</h2>
+  <ul>
+  {% for tag in allTags.group('relationships') %}
+    <li><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
+  {% endfor %}
+  </ul>
+
+  <style>
+    #grid .mix { display: none; }
+  </style>
+
+  <div id="grid">
+	{% for entry in caregivers %}
+    {% set tags = [] %}
+    {% set tags = tags|merge(entry.diseaseTag) %}
+    {% set tags = tags|merge(entry.insightTag) %}
+    {% set tags = tags|merge(entry.relationshipTag) %}
+		<article class="mix{% for tag in tags %} {{ tag | kebab }}{% endfor %}">
 			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-			{{ entry.body.getPage(1) }}
-			<p><a href="{{ entry.url }}">Continue reading</a></p>
+      {% set thumbnail = entry.caregiverThumbnail[0] ?? null %}
+      {% if thumbnail %}
+        {{ thumbnail.url }}
+      {% endif %}
 		</article>
 	{% endfor %}
+  </div>
 {% endblock %}
