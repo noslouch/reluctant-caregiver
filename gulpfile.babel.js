@@ -127,7 +127,18 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
 });
 
 gulp.task('watch', ['vendor:js', 'vendor:css', 'styles', 'scripts', 'fonts'], () => {
-  gulp.watch(['.tmp/scripts.min.js', '.tmp/vendor.min.js'])
+  let sources = [
+    '.tmp/caregiver.css',
+    '.tmp/scripts.min.js',
+    '.tmp/scripts.min.js.map',
+    '.tmp/vendor.min.css',
+    '.tmp/vendor.min.js'
+  ];
+
+  gulp.src(sources)
+    .pipe(gulp.dest('public/dist'));
+
+  gulp.watch(sources)
     .on('change', ({ path }) => {
       gulp.src(path)
         .pipe(gulp.dest('public/dist'));
