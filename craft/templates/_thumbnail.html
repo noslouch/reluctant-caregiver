@@ -1,6 +1,6 @@
 <article class="thumbnail">
   <a href="{{ entry.url }}">
-    {% if thumbnail %}
+    {% if thumbnail is defined and thumbnail is not null %}
     <img src="{{thumbnail.getUrl('thumbnail')}}" width="{{thumbnail.getWidth('thumbnail')}}" height="{{thumbnail.getHeight('thumbnail')}}">
     {% endif %}
 

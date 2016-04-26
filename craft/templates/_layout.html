@@ -15,34 +15,63 @@
 	<meta charset="utf-8" />
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
 	<link rel="home" href="{{ siteUrl }}" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <link rel="stylesheet" href="/dist/vendor.min.css">
   <link rel="stylesheet" href="/dist/caregiver.css">
 
 </head>
 
-<body>
-	<div id="container">
-		<header id="header">
-			<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
+<body{% if homepage is defined %} class="l-home"{% endif %}>
+  <header class="siteheader" id="header">
 
-			<nav>
-				<ul>
-					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
-				</ul>
-			</nav>
-		</header>
+    <div class="l-constrained">
+      <div class="siteheader-split">
 
-		<main id="content" role="main">
-			{% block content %}
-				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
-			{% endblock %}
-		</main>
+        <h1 class="logo">
+          <a href="{{ siteUrl }}">
+            <span class="logo-1">The</span>
+            <span class="logo-2">Relucant</span>
+            <span class="logo-3">Caregiver</span>
+          </a>
+        </h1>
 
-		<footer id="footer">
-			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://craftcms.com">Craft</a>
-		</footer>
-	</div>
+        <div class="siteheader-right">
+          <nav class="siteheader-nav">
+            <ul>
+              <li>
+                <a href="/caregivers">Meet the Caregivers</a>
+              </li>
+              <li>
+                <a href="/stories">Watch the Stories</a>
+              </li>
+            </ul>
+          </nav>
+
+          <form class="searchform" action="{{ url('search/results') }}">
+            <input class="input" type="Search" placeholder="Search" name="q" />
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <button type="submit" class="btn btn--gray">GO</button>
+          </form>
+          
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  {% if homepage is not defined %}
+  <main id="content" role="main" class="l-constrained">
+  {% else %}
+  <main role="main">
+  {% endif %}
+    {% block content %}
+      <p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+      <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+    {% endblock %}
+  </main>
+
+  <footer id="footer" class="footer"></footer>
+
   <script src="/dist/vendor.min.js"></script>
   <script src="/dist/scripts.min.js"></script>
 </body>

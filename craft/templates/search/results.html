@@ -1,0 +1,27 @@
+{% extends "_grid" %}
+{% set query = craft.request.getParam('q') %}
+
+{% set entries = craft.entries({
+  search: query,
+  order: 'score',
+  with: [
+  'videoThumbnail',
+  'caregiverThumbnail',
+  'diseaseTag',
+  'insightTag',
+  'relationshipTag'
+  ],
+  order: 'score'
+}) %}
+
+{% set title = 'Results for ' ~ query %}
+
+{% block thumbnail %}
+  {% if entry.caregiverThumbnail and entry.caregiverThumbnail[0] %}
+    {% set thumbnail = entry.caregiverThumbnail[0] %}
+  {% elseif entry.videoThumbnail and entry.videoThumbnail[0] %}
+    {% set thumbnail = entry.videoThumbnail[0] %}
+  {% endif %}
+
+  {% include '_thumbnail' %}
+{% endblock %}
