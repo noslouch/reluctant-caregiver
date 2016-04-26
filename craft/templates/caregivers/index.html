@@ -10,51 +10,13 @@
  # http://craftcms.com/docs/routing
  #}
 
-{% extends "_layout" %}
+{% extends "_grid" %}
 {% set title = "Caregivers" %}
 
-{% block content %}
-  <h1>{{title}}</h1>
+{% set entries = craft.entries.section('caregivers').with('caregiverThumbnail', 'diseaseTag', 'insightTag', 'relationshipTag') %}
 
-  <button class="filter" data-filter="all">Show All</button>
-  {% set caregivers = craft.entries.section('caregivers').with('caregiverThumbnail', 'diseaseTag', 'insightTag', 'relationshipTag') %}
-  {% set allTags = craft.tags.relatedTo(caregivers) %}
-  <h2>dieases</h2>
-  <ul>
-  {% for tag in allTags.group('diseases') %}
-    <li><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
-  {% endfor %}
-  </ul>
-  <h2>insights</h2>
-  <ul>
-  {% for tag in allTags.group('insights') %}
-    <li><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
-  {% endfor %}
-  </ul>
-  <h2>relationships</h2>
-  <ul>
-  {% for tag in allTags.group('relationships') %}
-    <li><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
-  {% endfor %}
-  </ul>
+{% block thumbnail %}
+  {% set thumbnail = entry.caregiverThumbnail[0] ?? null %}
 
-  <style>
-    #grid .mix { display: none; }
-  </style>
-
-  <div id="grid">
-	{% for entry in caregivers %}
-    {% set tags = [] %}
-    {% set tags = tags|merge(entry.diseaseTag) %}
-    {% set tags = tags|merge(entry.insightTag) %}
-    {% set tags = tags|merge(entry.relationshipTag) %}
-		<article class="mix{% for tag in tags %} {{ tag | kebab }}{% endfor %}">
-			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-      {% set thumbnail = entry.caregiverThumbnail[0] ?? null %}
-      {% if thumbnail %}
-        {{ thumbnail.url }}
-      {% endif %}
-		</article>
-	{% endfor %}
-  </div>
+  {% include '_thumbnail' %}
 {% endblock %}

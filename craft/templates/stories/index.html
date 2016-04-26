@@ -10,17 +10,13 @@
  # http://craftcms.com/docs/routing
  #}
 
-{% extends "_layout" %}
-{% set title = "Videos" %}
+{% extends "_grid" %}
+{% set title = "Stories" %}
 
-{% block content %}
-<h1>{{title}}</h1>
+{% set entries = craft.entries.section('videos').with('videoThumbnail', 'diseaseTag', 'insightTag', 'relationshipTag') %}
 
-	{% for entry in craft.entries.section('videos').with('videoThumbnail') %}
-		<article>
-			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-			{{ entry.videoThumbnail[0].url }}
-		</article>
-	{% endfor %}
+{% block thumbnail %}
+  {% set thumbnail = entry.videoThumbnail[0] ?? null %}
+
+  {% include '_thumbnail' %}
 {% endblock %}

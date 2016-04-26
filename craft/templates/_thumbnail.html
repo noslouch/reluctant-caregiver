@@ -1,0 +1,12 @@
+<article class="thumbnail">
+  <a href="{{ entry.url }}">
+    {% if thumbnail %}
+    <img src="{{thumbnail.getUrl('thumbnail')}}" width="{{thumbnail.getWidth('thumbnail')}}" height="{{thumbnail.getHeight('thumbnail')}}">
+    {% endif %}
+
+    <div class="thumbnail-caption">
+      <h3 class="thumbnail-title">{{ entry.title }}</h3>
+    </div>
+  </a>
+</article>
+
