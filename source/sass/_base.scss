@@ -12,6 +12,10 @@ body {
   color: black;
 }
 
+body {
+  padding-top: 207px;
+}
+
 h1,
 h2,
 h3,
@@ -21,6 +25,11 @@ h6 {
   margin: 0;
   font-size: 1rem;
   font-weight: normal;
+}
+
+.h1 {
+  font-size: 24px;
+  line-height: 1.8;
 }
 
 img {
@@ -37,4 +46,11 @@ a {
 
 a:hover {
   border-bottom-color: black;
+}
+
+hr {
+  max-width: 50px;
+  border-color: $orange;
+  border-style: solid;
+  border-width: 2px;
 }

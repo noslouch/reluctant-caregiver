@@ -1,4 +1,36 @@
+.l-highlight {
+  background-color: $orange;
+  padding: 25px 0;
+}
+
 .l-constrained {
-  max-width: 1250px;
+  max-width: 1150px;
   margin: 0 auto;
+}
+
+.l-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.l-flexbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.l-home {
+  padding-top: 0;
+}
+
+.l-bgimg {
+  background-image: url(/dist/img/header.jpg);
+  height: 80vh;
+}
+
+.l-flexcenter {
+  display: flex;
+  align-items: center;
+  jusify-content: center;
 }

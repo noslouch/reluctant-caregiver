@@ -1,0 +1,60 @@
+.siteheader {
+  background-image: url(/dist/img/header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 45px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  transition: padding 125ms ease;
+}
+
+.siteheader--small {
+  padding: 20px 0;
+}
+
+.siteheader--small .logo {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.l-home .siteheader {
+  background-image: none;
+}
+
+.siteheader-split {
+  display: flex;
+  justify-content: space-between;
+}
+
+.siteheader-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+}
+
+.siteheader-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.siteheader-nav li {
+  margin-bottom: 5px;
+}
+
+.siteheader-nav li:last-child {
+  margin-bottom: 0;
+}
+
+.siteheader-nav a {
+  color: white;
+}
+
+.siteheader-nav a:hover {
+  border-bottom-color: white;
+}

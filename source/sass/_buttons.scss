@@ -1,0 +1,19 @@
+.btn {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: white;
+  border: 1px solid black;
+  padding: 8px 15px;
+  cursor: pointer;
+  outline: 1px dotted black;
+}
+
+.btn--gray {
+  background: #CCC;
+}
+
+.btn--gray:hover {
+  background: black;
+  color: white;
+}

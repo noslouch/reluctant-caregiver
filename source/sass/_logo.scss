@@ -1,0 +1,28 @@
+.logo {
+  display: inline-block;
+  width: 150px;
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.logo-1,
+.logo-2,
+.logo-3 {
+  display: block;
+  line-height: 1;
+}
+
+.logo-1,
+.logo-2 {
+  color: black;
+}
+
+.logo-3 {
+  color: white;
+}
+
+.logo-2,
+.logo-3 {
+  margin-left: 15px;
+}
