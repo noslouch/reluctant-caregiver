@@ -1,10 +1,13 @@
+/*global $*/
+'use strict';
+
 $(function() {
   let content = document.querySelector('#content');
   let header = document.querySelector('#header');
 
   function measureContent() {
-    let { top:contentTop } = content.getBoundingClientRect();
-    let { bottom:headerBottom } = header.getBoundingClientRect();
+    let { top: contentTop } = content.getBoundingClientRect();
+    let { bottom: headerBottom } = header.getBoundingClientRect();
     if (contentTop < headerBottom) {
       header.classList.add('siteheader--small');
     } else {

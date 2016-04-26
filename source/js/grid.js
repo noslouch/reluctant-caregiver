@@ -1,3 +1,6 @@
+/*global $*/
+'use strict';
+
 $(function() {
   var $grid = $('#grid');
   if ($grid.length) {
