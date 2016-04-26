@@ -2,44 +2,61 @@
 {% set allTags = craft.tags.relatedTo(entries) %}
 
 {% block content %}
-  <h1>{{title}}</h1>
 
-  <button class="filter" data-filter="all">Show All</button>
-  <h2>dieases</h2>
-  <ul>
-  {% for tag in allTags.group('diseases') %}
-    <li><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
-  {% endfor %}
-  </ul>
-  <h2>insights</h2>
-  <ul>
-  {% for tag in allTags.group('insights') %}
-    <li><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
-  {% endfor %}
-  </ul>
-  <h2>relationships</h2>
-  <ul>
-  {% for tag in allTags.group('relationships') %}
-    <li><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
-  {% endfor %}
-  </ul>
+  <h1 class="h1 text--aligncenter text--upper">{{title}}</h1>
+  <hr>
 
-  <div class="l-constrained">
-    <div id="grid" class="grid">
-    {% for entry in entries %}
-      {% set tags = [] %}
-      {% set tags = tags|merge(entry.diseaseTag) %}
-      {% set tags = tags|merge(entry.insightTag) %}
-      {% set tags = tags|merge(entry.relationshipTag) %}
+  <div class="l-narrow">
+    <div class="l-flexbar">
 
-      <div class="grid-item{% for tag in tags %} {{ tag | kebab }}{% endfor %}">
-        {% block thumbnail %}{% endblock %}
+      <button class="btn filter" data-filter="all">Show All</button>
+
+      <span>FILTER BY:</span>
+
+      <div class="dropdown">
+        <h2 class="dropdown-title"><span>diseases</span></h2>
+        <ul class="dropdown-body">
+        {% for tag in allTags.group('diseases') %}
+          <li class="dropdown-item"><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
+        {% endfor %}
+        </ul>
       </div>
 
-    {% endfor %}
+      <div class="dropdown">
+        <h2 class="dropdown-title"><span>insights</span></h2>
+        <ul class="dropdown-body">
+        {% for tag in allTags.group('insights') %}
+          <li class="dropdown-item"><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
+        {% endfor %}
+        </ul>
+      </div>
 
-    <div class="gap"></div>
+      <div class="dropdown">
+        <h2 class="dropdown-title"><span>relationships</span></h2>
+        <ul class="dropdown-body">
+        {% for tag in allTags.group('relationships') %}
+          <li class="dropdown-item"><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
+        {% endfor %}
+        </ul>
+      </div>
+
     </div>
+  </div>
+
+  <div id="grid" class="grid">
+  {% for entry in entries %}
+    {% set tags = [] %}
+    {% set tags = tags|merge(entry.diseaseTag) %}
+    {% set tags = tags|merge(entry.insightTag) %}
+    {% set tags = tags|merge(entry.relationshipTag) %}
+
+    <div class="grid-item{% for tag in tags %} {{ tag | kebab }}{% endfor %}">
+      {% block thumbnail %}{% endblock %}
+    </div>
+
+  {% endfor %}
+
+  <div class="gap"></div>
   </div>
 
 {% endblock %}
