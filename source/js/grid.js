@@ -1,6 +1,10 @@
 $(function() {
   var $grid = $('#grid');
   if ($grid.length) {
-    $grid.mixItUp();
+    $grid.mixItUp({
+      selectors: {
+        target: '.grid-item'
+      }
+    });
   }
 });
