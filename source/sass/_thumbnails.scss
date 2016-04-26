@@ -1,0 +1,31 @@
+.thumbnail {
+  margin-bottom: 18px;
+}
+
+.thumbnail > a {
+  border: none;
+  position: relative;
+}
+
+.thumbnail-caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #EE3928;
+  max-width: 292px;
+  padding: 13px;
+  transition: background-color 125ms ease;
+}
+
+.thumbnail > a:hover > .thumbnail-caption {
+  background-color: black;
+  transition: background-color 125ms ease;
+}
+
+.thumbnail-title {
+  color: white;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 12px;
+  text-align: left;
+}

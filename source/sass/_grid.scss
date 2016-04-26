@@ -1,0 +1,44 @@
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  text-align: justify;
+
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.grid:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+.grid .grid-item,
+.grid .gap {
+  display: inline-block;
+  width: 100%;
+}
+
+.grid .grid-item {
+  text-align: center;
+  vertical-align: top;
+  display: none;
+}
+
+/* Flex box progressive enhancements: */
+
+@media all and (min-width: 630px) {
+  .grid .grid-item,
+  .grid .gap {
+    width: 49%;
+  }
+}
+
+@media all and (min-width: 950px) {
+  .grid .grid-item,
+  .grid .gap {
+    width: 32%;
+  }
+}
