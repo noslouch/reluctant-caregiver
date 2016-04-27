@@ -88,7 +88,7 @@ gulp.task('fonts', () => {
   return gulp.src(mainBowerFiles('**/*.{eot,svg,ttf,woff,woff2}', function (err) {})
     .concat('source/fonts/**/*'))
     .pipe(gulp.dest('.tmp/fonts'))
-    .pipe(gulp.dest('dist/fonts'));
+    .pipe(gulp.dest('public/dist/fonts'));
 });
 
 gulp.task('extras', () => {
