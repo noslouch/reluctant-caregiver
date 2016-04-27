@@ -23,7 +23,7 @@ return array(
     '.org'  => array(
       'environmentVariables' => array(
         'basePath'  => '/home/brianwhitton/thereluctantcaregiver.org/public/',
-        'baseUrl'   => 'http://http://thereluctantcaregiver.org/'
+        'baseUrl'   => 'http://thereluctantcaregiver.org/'
       )
     )
 );
