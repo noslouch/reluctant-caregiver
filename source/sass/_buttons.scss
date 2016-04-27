@@ -17,3 +17,27 @@
   background: black;
   color: white;
 }
+
+.btn--next,
+.btn--prev {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  color: #b4b3b4;
+  position: absolute;
+  top: 38%;
+  transition: color 125ms ease;
+
+  &:hover {
+    color: $orange;
+  }
+}
+
+.btn--next {
+  right: -85px;
+}
+
+.btn--prev {
+  left: -85px;
+}

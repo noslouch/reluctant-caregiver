@@ -19,6 +19,12 @@
 
 {% extends "_layout" %}
 {% set homepage = true %}
+{% set caregivers = craft.entries.section('caregivers').with('caregiverThumbnail') %}
+{% set videos = craft.entries.section('videos').with('videoThumbnail', 'diseaseTag', 'insightTag', 'relationshipTag') %}
+
+{% set conditionVideos = craft.tags.group('diseases').relatedTo(videos) %}
+{% set relationshipVideos = videos.relatedTo(craft.tags.group('relationships')) %}
+{% set insightVideos = videos.relatedTo(craft.tags.group('insights')) %}
 
 {% block content %}
   <div class="l-bgimg">
@@ -31,5 +37,56 @@
       {{ entry.tease }}
     </div>
   </div>
-  <div id="content"></div>
+  <div id="content">
+    <section class="l-padded">
+      <div class="l-wider">
+        <h2 class="headline">Caregivers</h2>
+        <div class="slider">
+        {% for entry in caregivers %}      
+          {% set thumbnail = entry.caregiverThumbnail[0] ?? null %}
+          {% include '_thumbnail' %}
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="l-padded l-highlight--alt">
+      <div class="l-wider">
+        <h2 class="headline">Conditions</h2>
+        <div class="slider">
+        {% for entry in conditionVideos %}      
+          {% set thumbnail = entry.videoThumbnail[0] ?? null %}
+          {% set entry = {url : entry.url, title: entry.diseaseTag[0]|ucwords} %}
+          {% include '_thumbnail' %}
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="l-padded">
+      <div class="l-wider">
+        <h2 class="headline">Relationships</h2>
+        <div class="slider">
+        {% for entry in relationshipVideos %}      
+          {% set thumbnail = entry.videoThumbnail[0] ?? null %}
+          {% set entry = {url : entry.url, title: entry.relationshipTag[0]|ucwords} %}
+          {% include '_thumbnail' %}
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="l-padded l-highlight--alt">
+      <div class="l-wider">
+        <h2 class="headline">Insights</h2>
+        <div class="slider">
+        {% for entry in insightVideos %}      
+          {% set thumbnail = entry.videoThumbnail[0] ?? null %}
+          {% set entry = {url : entry.url, title: entry.insightTag[0]|ucwords} %}
+          {% include '_thumbnail' %}
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+  </div>
 {% endblock %}

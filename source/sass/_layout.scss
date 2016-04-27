@@ -3,6 +3,10 @@
   padding: 25px 0;
 }
 
+.l-highlight--alt {
+  background-color: #f3f3f3;
+}
+
 .l-constrained {
   max-width: 1150px;
   margin: 0 auto;
@@ -11,6 +15,15 @@
 .l-narrow {
   max-width: 720px;
   margin: 0 auto;
+}
+
+.l-wider {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.l-padded {
+  padding: 70px 0;
 }
 
 .l-flexbar {
