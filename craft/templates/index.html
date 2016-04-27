@@ -22,7 +22,7 @@
 {% set caregivers = craft.entries.section('caregivers').with('caregiverThumbnail') %}
 {% set videos = craft.entries.section('videos').with('videoThumbnail', 'diseaseTag', 'insightTag', 'relationshipTag') %}
 
-{% set conditionVideos = craft.tags.group('diseases').relatedTo(videos) %}
+{% set conditionVideos = videos.relatedTo(craft.tags.group('diseases')) %}
 {% set relationshipVideos = videos.relatedTo(craft.tags.group('relationships')) %}
 {% set insightVideos = videos.relatedTo(craft.tags.group('insights')) %}
 
