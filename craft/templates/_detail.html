@@ -11,7 +11,9 @@
 
     <div class="l-constrained" id="content">
       {% if mainImage %}
-      <img class="image-main" src="{{mainImage.getUrl('main')}}" height="{{mainImage.getHeight('main')}}" width="{{mainImage.getWidth('main')}}">
+      <div class="main-image">
+        <img class="image-main" id="mainImage" src="{{mainImage.getUrl('main')}}" height="{{mainImage.getHeight('main')}}" width="{{mainImage.getWidth('main')}}">
+      </div>
       {% endif %}
 
       <div class="l-splitcontent">
@@ -80,5 +82,8 @@
     </section>
       
 	</article>
-{% endblock %}
 
+  <script type="text/javascript">
+  var CAREGIVER = { ytUrl: "{{entry.videoUrl}}" };
+  </script>
+{% endblock %}
