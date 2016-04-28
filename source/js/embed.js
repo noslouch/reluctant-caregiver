@@ -1,22 +1,21 @@
+'use strict';
 (function() {
   var mainImage = document.querySelector('#mainImage');
-  var url = processURL(window.CAREGIVER && window.CAREGIVER.ytUrl);
-  if (!mainImage || !url) {
+  if (!mainImage) {
     return;
   }
-  var imageWrapper = mainImage.parentElement;
 
-  function embedVideo(e) {
-    var currentHeight = imageWrapper.clientHeight;
-    var iframe = generateIframe(currentHeight, url);
-    imageWrapper.removeChild(mainImage);
-    imageWrapper.appendChild(iframe);
-    imageWrapper.classList.add('is-video');
+  function processURL(fullUrl) {
+    if (!fullUrl) {
+      return false;
+    }
+    var parts = fullUrl.split('=');
+    return `https:\/\/www.youtube.com\/embed\/${parts[1]}`;
   }
 
-  function generateIframe(height, url) {
+  function generateIframe(height, src) {
     var iframe = document.createElement('iframe');
-    iframe.setAttribute('src', url);
+    iframe.setAttribute('src', src);
     iframe.setAttribute('height', height);
     iframe.setAttribute('width', '100%');
     iframe.setAttribute('frameborder', 0);
@@ -26,12 +25,15 @@
     return iframe;
   }
 
-  function processURL(fullUrl) {
-    if (!fullUrl) {
-      return false;
-    }
-    var parts = fullUrl.split('=');
-    return `https:\/\/www.youtube.com\/embed\/${parts[1]}`;
+  var url = processURL(window.CAREGIVER && window.CAREGIVER.ytUrl);
+  var imageWrapper = mainImage.parentElement;
+
+  function embedVideo() {
+    var currentHeight = imageWrapper.clientHeight;
+    var iframe = generateIframe(currentHeight, url);
+    imageWrapper.removeChild(mainImage);
+    imageWrapper.appendChild(iframe);
+    imageWrapper.classList.add('is-video');
   }
 
   imageWrapper.addEventListener('click', embedVideo, false);
