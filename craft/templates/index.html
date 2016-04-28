@@ -18,13 +18,12 @@
  #}
 
 {% extends "_layout" %}
-{% set homepage = true %}
-{% set caregivers = craft.entries.section('caregivers').with('caregiverThumbnail') %}
+{% set videosFromCaregiver = craft.entries.section('caregivers').with('caregiverThumbnail') %}
 {% set videos = craft.entries.section('videos').with('videoThumbnail', 'diseaseTag', 'insightTag', 'relationshipTag') %}
 
-{% set conditionVideos = videos.relatedTo(craft.tags.group('diseases')) %}
-{% set relationshipVideos = videos.relatedTo(craft.tags.group('relationships')) %}
-{% set insightVideos = videos.relatedTo(craft.tags.group('insights')) %}
+{% set videosFromDisease = videos.relatedTo(craft.tags.group('diseases')) %}
+{% set videosFromRelationsip = videos.relatedTo(craft.tags.group('relationships')) %}
+{% set videosFromInsight = videos.relatedTo(craft.tags.group('insights')) %}
 
 {% block content %}
   <div class="l-bgimg">
@@ -42,7 +41,7 @@
       <div class="l-wider">
         <h2 class="headline">Caregivers</h2>
         <div class="slider">
-        {% for entry in caregivers %}      
+        {% for entry in videosFromCaregiver %}      
           {% set thumbnail = entry.caregiverThumbnail[0] ?? null %}
           {% include '_thumbnail' %}
         {% endfor %}
@@ -54,7 +53,7 @@
       <div class="l-wider">
         <h2 class="headline">Conditions</h2>
         <div class="slider">
-        {% for entry in conditionVideos %}      
+        {% for entry in videosFromDisease %}      
           {% set thumbnail = entry.videoThumbnail[0] ?? null %}
           {% set entry = {url : entry.url, title: entry.diseaseTag[0]|ucwords} %}
           {% include '_thumbnail' %}
@@ -67,7 +66,7 @@
       <div class="l-wider">
         <h2 class="headline">Relationships</h2>
         <div class="slider">
-        {% for entry in relationshipVideos %}      
+        {% for entry in videosFromRelationsip %}      
           {% set thumbnail = entry.videoThumbnail[0] ?? null %}
           {% set entry = {url : entry.url, title: entry.relationshipTag[0]|ucwords} %}
           {% include '_thumbnail' %}
@@ -80,7 +79,7 @@
       <div class="l-wider">
         <h2 class="headline">Insights</h2>
         <div class="slider">
-        {% for entry in insightVideos %}      
+        {% for entry in videosFromInsight %}      
           {% set thumbnail = entry.videoThumbnail[0] ?? null %}
           {% set entry = {url : entry.url, title: entry.insightTag[0]|ucwords} %}
           {% include '_thumbnail' %}

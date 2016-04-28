@@ -1,14 +1,3 @@
-{#
- # Layout template
- # ---------------
- #
- # This template defines your site’s global layout. It can be
- # “extended” by other templates to fill in the gaps.
- #
- # See Twig’s Template Inheritance documentation for more details:
- # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
- #}
-
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -21,7 +10,11 @@
 
 </head>
 
-<body{% if homepage is defined %} class="l-home"{% endif %}>
+{% if entry is defined %}
+<body class="l-entry">
+{% else %}
+<body>
+{% endif %}
   <header class="siteheader" id="header">
 
     <div class="l-constrained">
@@ -59,15 +52,12 @@
     </div>
   </header>
 
-  {% if homepage is not defined %}
+  {% if entry is not defined %}
   <main id="content" role="main" class="l-constrained">
   {% else %}
   <main role="main">
   {% endif %}
-    {% block content %}
-      <p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-      <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
-    {% endblock %}
+    {% block content %}{% endblock %}
   </main>
 
   <footer id="footer" class="footer"></footer>
