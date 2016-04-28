@@ -1,24 +1,9 @@
-{#
- # News entry template
- # -------------------
- #
- # This template gets loaded whenever a News entry’s URL is
- # requested. That’s because the News section’s Template setting is
- # set to “news/_entry”, the path to this template.
- #
- # When this template is loaded, it will already have an ‘entry’
- # variable, set to the requested News entry.
- #
- # See this page for more details on how Craft routes requests:
- # http://craftcms.com/docs/routing
- #}
+{% extends "_detail" %}
 
-{% extends "_layout" %}
-
-{% block content %}
-	<article>
-		<h1>{{ entry.title }}</h1>
-		<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-		{{ entry.body }}
-	</article>
-{% endblock %}
+{% set mainImage = entry.caregiverThumbnail.first() %}
+{% set disease = entry.diseaseTag.first() %}
+{% set relationship = entry.relationshipTag.first() %}
+{% set caregiver = entry %}
+{% set videosFromCaregiver = craft.entries.section('videos').relatedTo(entry).with('videoThumbnail') %}
+{% set videosFromDisease = craft.entries.section('videos').relatedTo(disease).with('videoThumbnail') %}
+{% set videosFromRelationship = craft.entries.section('videos').relatedTo(relationship).with('videoThumbnail') %}
