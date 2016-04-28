@@ -2,17 +2,19 @@
   background-image: url(/assets/header.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: transparent;
   padding: 45px 0;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 200;
-  transition: padding 125ms ease;
+  transition: padding 125ms ease, background-color 125ms ease;
 }
 
 .siteheader--small {
   padding: 20px 0;
+  background-color: $orange;
 }
 
 .siteheader--small .logo {
@@ -20,7 +22,7 @@
   font-weight: 700;
 }
 
-.l-home .siteheader {
+.l-entry .siteheader {
   background-image: none;
 }
 

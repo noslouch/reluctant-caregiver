@@ -1,3 +1,15 @@
+.text--white {
+  color: white;
+}
+
+.text--gray {
+  color: #636464;
+
+  a:hover {
+    color: $orange;
+  }
+}
+
 .text--aligncenter {
   text-align: center;
 }
@@ -21,5 +33,75 @@
     background-color: $orange;
     margin: 0 auto;
     margin-top: 15px;
+  }
+}
+
+.headline--large {
+  font-size: 28px;
+}
+
+.headline--left {
+  text-align: left;
+  
+  &:after {
+    margin-left: 0;
+  }
+}
+
+.separator {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.text--padright {
+  padding-right: 60px;
+}
+
+.quotebox {
+  background-color: $orange;
+  padding: 35px;
+  margin-bottom: 35px;
+  position: relative;
+  color: white;
+  font-size: 28px;
+  font-weight: 100;
+  letter-spacing: 1px;
+
+  &:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 35px;
+    border-right-color: $orange;
+    position: absolute;
+    right: 0;
+    bottom: -35px;
+  }
+}
+
+.quotebox-body {
+  position: relative;
+
+  &:after,
+  &:before {
+    font-family: serif;
+    font-size: 68px;
+    position: absolute;
+    line-height: 0;
+    color: rgba(0,0,0,0.25);
+  }
+
+  &:after {
+    content: '\201D';
+    bottom: -5px;
+    right: -5px;
+  }
+
+  &:before {
+    content: '\201C';
+    top: 18px;
+    left: -22px;
   }
 }

@@ -33,7 +33,7 @@
   margin-bottom: 3rem;
 }
 
-.l-home {
+.l-entry {
   padding-top: 0;
 }
 
@@ -42,8 +42,38 @@
   height: 80vh;
 }
 
+.l-bgimg--short {
+  height: 480px;
+  max-height: 80vh;
+}
+
 .l-flexcenter {
   display: flex;
   align-items: center;
-  jusify-content: center;
+  justify-content: center;
+}
+
+.l-push {
+  margin-bottom: 50px;
+}
+
+.l-splitcontent {
+  overflow: auto;
+  > [class*=l-col] {
+    float: left;
+  }
+}
+
+.l-col60 {
+  width: 100%;
+  @media screen and (min-width: 600px) {
+    width: 60%;
+  }
+}
+
+.l-col40 {
+  width: 100%;
+  @media screen and (min-width: 600px) {
+    width: 40%;
+  }
 }
