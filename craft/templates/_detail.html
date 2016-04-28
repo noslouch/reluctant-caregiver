@@ -1,0 +1,84 @@
+{% extends "_layout" %}
+
+{% block content %}
+	<article>
+	  <div class="l-bgimg l-bgimg--short l-flexcenter l-push">
+      <div class="text--aligncenter text--white text--upper">
+        <h1 class="h1">{{ entry.title }}</h1>
+        <p class="h3">{{disease}} <span class="separator">|</span> {{relationship}}</p>
+      </div>
+    </div>
+
+    <div class="l-constrained" id="content">
+      {% if mainImage %}
+      <img class="image-main" src="{{mainImage.getUrl('main')}}" height="{{mainImage.getHeight('main')}}" width="{{mainImage.getWidth('main')}}">
+      {% endif %}
+
+      <div class="l-splitcontent">
+        <div class="l-col60">
+          <div class="text--padright">
+            {{ entry.body }}
+
+            {% if resources is defined %}
+              <h3 class="h3 text--upper text--gray">Resources</h3>
+              <ul class="list text--gray">
+              {% for resource in resources %}
+                <li>> <a class="nodecor" href="{{resource.resourceUrl}}">{{resource.resourceText}}</a></li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+        {% if entry.keyInsight %}
+        <div class="l-col40">
+          <div class="quotebox">
+            <div class="quotebox-body">
+              {{ entry.keyInsight }}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <section class="l-padded">
+      <div class="l-wider">
+        <h2 class="headline">More from {{caregiver}}</h2>
+        <div class="slider">
+        {% for entry in videosFromCaregiver %}      
+        {% set thumbnail = entry.videoThumbnail[0] ?? null %}
+        {% include '_thumbnail' %}
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="l-padded l-highlight--alt">
+      <div class="l-wider">
+        <h2 class="headline">More videos on {{disease}}</h2>
+        <div class="slider">
+        {% for entry in videosFromDisease %}      
+          {% set thumbnail = entry.videoThumbnail[0] ?? null %}
+          {% set entry = {url : entry.url, title: entry} %}
+          {% include '_thumbnail' %}
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="l-padded">
+      <div class="l-wider">
+        <h2 class="headline">More stories from {{relationship}}</h2>
+        <div class="slider">
+        {% for entry in videosFromRelationship %}      
+          {% set thumbnail = entry.videoThumbnail[0] ?? null %}
+          {% set entry = {url : entry.url, title: entry} %}
+          {% include '_thumbnail' %}
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+      
+	</article>
+{% endblock %}
+
