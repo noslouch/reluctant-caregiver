@@ -10,3 +10,4 @@
 {% set videosFromRelationship = craft.entries.section('videos').relatedTo(relationship).with('videoThumbnail') %}
 
 {% set resources = entry.resources.find() %}
+{% set videoUrl = entry.videoUrl %}

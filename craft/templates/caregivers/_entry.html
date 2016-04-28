@@ -7,3 +7,5 @@
 {% set videosFromCaregiver = craft.entries.section('videos').relatedTo(entry).with('videoThumbnail') %}
 {% set videosFromDisease = craft.entries.section('videos').relatedTo(disease).with('videoThumbnail') %}
 {% set videosFromRelationship = craft.entries.section('videos').relatedTo(relationship).with('videoThumbnail') %}
+
+{% set videoUrl = entry.featuredVideo.first().videoUrl %}

@@ -1,10 +1,10 @@
 (function() {
   var mainImage = document.querySelector('#mainImage');
-  var imageWrapper = mainImage.parentElement;
   var url = processURL(window.CAREGIVER && window.CAREGIVER.ytUrl);
   if (!mainImage || !url) {
     return;
   }
+  var imageWrapper = mainImage.parentElement;
 
   function embedVideo(e) {
     var currentHeight = imageWrapper.clientHeight;
