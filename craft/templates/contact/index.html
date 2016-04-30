@@ -1,0 +1,71 @@
+{% extends '_layout' %}
+
+{% block content %}
+	<article>
+	  <div class="l-bgimg l-bgimg--short l-flexcenter l-push">
+      <div class="text--aligncenter text--white text--upper">
+        <h1 class="h1">{{ entry.title }}</h1>
+      </div>
+    </div>
+
+    <div id="content">
+      <section class="l-padded">
+        <div class="l-constrained">
+          <h2 class="headline headline--large">We'd Love to Hear From You.</h2>
+          <p>You can email us at hello@thereluctantcaregiver.com</p>
+        </div>
+      </section>
+
+      <section class="l-padded l-highlight--alt">
+        <div class="l-constrained">
+          <h3 class="headline">Would you like to share your story?</h3>
+          <p>something something something</p>
+        </div>
+
+        {% macro errorList(errors) %}
+          {% if errors %}
+            <ul class="errors">
+              {% for error in errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endmacro %}
+
+        {% from _self import errorList %}
+
+        <form class="contact-form" method="post" action="" accept-charset="UTF-8">
+          {{ getCsrfInput() }}
+          <input type="hidden" name="action" value="contactForm/sendMessage">
+          <input type="hidden" name="redirect" value="contact/thanks">
+          <input type="text" name="boogabooga" id="boogabooga">
+
+          <div class="row">
+            <label class="label-inline">Hello, my name is <input class="input" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}"></label>
+            {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
+          </div>
+
+          <div class="row">
+            <label class="label-inline">I'd like to share my story about helping my <input class="input" type="text" name="message[relationship]" value="{% if message is defined %}{{ message.messageFields.relationship }}{% endif %}"></label>
+            {{ message is defined and message ? errorList(message.getErrors('relationship')) }}
+          </div>
+
+          <div class="row">
+            <label class="label-inline">with <input class="input" type="text" name="message[disease]" value="{% if message is defined %}{{ message.messageFields.disease }}{% endif %}">.</label>
+            {{ message is defined and message ? errorList(message.getErrors('disease')) }}
+          </div>
+
+          <div class="row">
+            <label class="label-inline">You can reach me via email at <input class="input" type="text" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">.</label>
+            {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+          </div>
+
+          <input type="submit" value="Send">
+        </form>
+
+      </section>
+
+    </div>
+	</article>
+
+{% endblock %}
