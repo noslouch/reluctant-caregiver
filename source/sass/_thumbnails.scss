@@ -34,16 +34,20 @@
   font-size: 12px;
   text-align: left;
   position: relative;
+  padding-right: 15px;
 
   &:after {
     content: '';
-    vertical-align: middle;
     border-radius: 50%;
     width: 12px;
     height: 12px;
     background-color: white;
-    display: inline-block;
-    margin: 0 0 1px 5px;
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
   }
 
   &:before {
@@ -59,5 +63,6 @@
     border-top-width: 3px;
     border-bottom-width: 3px;
     border-left-color: $orange;
+    z-index: 10;
   }
 }
