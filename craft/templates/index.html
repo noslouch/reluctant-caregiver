@@ -21,19 +21,19 @@
 {% set videosFromCaregiver = craft.entries.section('caregivers').with('caregiverThumbnail') %}
 {% set videos = craft.entries.section('videos').with('videoThumbnail', 'diseaseTag', 'insightTag', 'relationshipTag') %}
 
-{% set videosFromDisease = videos.relatedTo(craft.tags.group('diseases')) %}
-{% set videosFromRelationsip = videos.relatedTo(craft.tags.group('relationships')) %}
-{% set videosFromInsight = videos.relatedTo(craft.tags.group('insights')) %}
+{% set videosFromDisease = videos.relatedTo(craft.tags.group('diseases')).limit(10) %}
+{% set videosFromRelationsip = videos.relatedTo(craft.tags.group('relationships')).limit(10) %}
+{% set videosFromInsight = videos.relatedTo(craft.tags.group('insights')).limit(10) %}
 
 {% block content %}
-  <div class="l-bgimg">
-    <div class="l-flexcenter">
-      {{ entry.headline }}
-    </div>
+  <div class="l-bgimg l-flexcenter">
+    <h1 class="h1 text--white text--upper">{{ entry.headline }}</h1>
   </div>
   <div class="l-highlight">
     <div class="l-narrow">
-      {{ entry.tease }}
+      <div class="text-tease">
+        {{ entry.tease }}
+      </div>
     </div>
   </div>
   <div id="content">
