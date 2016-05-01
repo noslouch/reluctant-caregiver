@@ -9,7 +9,8 @@
 
 return array(
     '*'     => array(
-      'omitScriptNameInUrls'  => true
+      'omitScriptNameInUrls'  => true,
+      'enableCsrfProtection' => true,
     ),
 
     '.dev'  => array(
