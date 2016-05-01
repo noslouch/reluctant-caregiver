@@ -3,15 +3,26 @@
 
 {% block content %}
 
-  <h1 class="h2 text--aligncenter text--upper">{{title}}</h1>
-  <hr>
+  <h1 class="headline headline--large">{{title}}</h1>
 
   <div class="l-narrow">
+    {% if entries | length %}
     <div class="l-flexbar">
 
       <button class="btn filter" data-filter="all">Show All</button>
 
       <span>FILTER BY:</span>
+
+      {% if caregivers is defined %}
+      <div class="dropdown">
+        <h2 class="dropdown-title"><span>Caregvers</span></h2>
+        <ul class="dropdown-body">
+        {% for tag in caregivers %}
+          <li class="dropdown-item"><button class="filter" data-filter=".{{ tag | kebab }}">{{tag}}</button></li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
 
       <div class="dropdown">
         <h2 class="dropdown-title"><span>diseases</span></h2>
@@ -41,22 +52,41 @@
       </div>
 
     </div>
+    {% else %}
+    <div class="text text--gray text--aligncenter l-push">
+      {% if summary is defined %}
+        <p>{{summary}}</p>
+      {% else %}
+        <p>Sorry, but no results could be found for your search. Please check your spelling and try again, or try exploring the stories below.</p>
+      {% endif %}
+    </div>
+    {% endif %}
   </div>
 
   <div id="grid" class="grid">
-  {% for entry in entries %}
-    {% set tags = [] %}
-    {% set tags = tags|merge(entry.diseaseTag) %}
-    {% set tags = tags|merge(entry.insightTag) %}
-    {% set tags = tags|merge(entry.relationshipTag) %}
+    {% for entry in entries %}
+      {% set tags = [] %}
+      {% set tags = tags|merge(entry.diseaseTag)|merge(entry.insightTag)|merge(entry.relationshipTag) %}
+      {% if caregivers is defined %}
+      {% set tags = tags|merge(entry.caregiver) %}
+      {% endif %}
 
-    <div class="grid-item{% for tag in tags %} {{ tag | kebab }}{% endfor %}">
-      {% block thumbnail %}{% endblock %}
-    </div>
+      <div class="grid-item{% for tag in tags %} {{ tag | kebab }}{% endfor %}">
+        {% block thumbnail %}{% endblock %}
+      </div>
+    {% else %}
+      {% for entry in otherEntries %}
+        {% if entry.caregiverThumbnail and entry.caregiverThumbnail[0] %}
+          {% set thumbnail = entry.caregiverThumbnail[0] %}
+        {% elseif entry.videoThumbnail and entry.videoThumbnail[0] %}
+          {% set thumbnail = entry.videoThumbnail[0] %}
+        {% endif %}
 
-  {% endfor %}
+        {% include '_thumbnail' %}
+      {% endfor %}
+    {% endfor %}
 
-  <div class="gap"></div>
+    <div class="gap"></div>
   </div>
 
 {% endblock %}
