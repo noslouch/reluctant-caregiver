@@ -1,0 +1,34 @@
+{% extends '_layout' %}
+
+{% block content %}
+	<article>
+	  <div class="l-bgimg l-bgimg--medium l-flexcenter l-push">
+      <div class="text--aligncenter text--white text--upper">
+        <h1 class="h1">{{ entry.title }}</h1>
+      </div>
+    </div>
+
+    <section class="l-padded" id="content">
+      <div class="l-constrained">
+        <div class="l-splitcontent">
+          <div class="l-col50">
+            <h2 class="headline headline--left">
+              {{entry.headline}}
+            </h2>
+            <div class="text text--medium text--gray">
+              {{entry.body}}
+            </div>
+          </div>
+          <div class="l-col50">
+            {%set image = entry.featuredImage.first()%}
+            {% if image %}
+            <img src="{{ image.getUrl('featured') }}" width="{{ image.getWidth('featured') }}" height="{{ image.getHeight('featured') }}">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+	</article>
+
+{% endblock %}

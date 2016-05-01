@@ -1,0 +1,22 @@
+{% extends '_layout' %}
+
+{% block content %}
+	<article>
+	  <div class="l-bgimg l-bgimg--medium l-flexcenter l-push">
+      <div class="text--aligncenter text--white text--upper">
+        <h1 class="h1">{{ entry.title }}</h1>
+      </div>
+    </div>
+
+    <section class="l-padded" id="content">
+      <div class="l-constrained">
+        <div class="text text--medium text--gray">
+          {{entry.body}}
+        </div>
+      </div>
+    </section>
+
+	</article>
+
+{% endblock %}
+
