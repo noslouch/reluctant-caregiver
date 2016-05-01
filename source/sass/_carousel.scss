@@ -14,3 +14,7 @@
 .slick-dots li.slick-active button:before {
   border-color: $orange;
 }
+
+.slick-loading .slick-list {
+  background-image: url(/dist/images/ajax-loader.gif);
+}
