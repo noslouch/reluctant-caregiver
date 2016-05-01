@@ -60,7 +60,41 @@
     {% block content %}{% endblock %}
   </main>
 
-  <footer id="footer" class="footer"></footer>
+  <footer id="footer" class="footer">
+    <div class="l-bgimg l-bgimg--short l-flexcenter">
+      <div class="l-flexcenter-body">
+        <h1 class="headline headline--alt">Sign up for notifications</h1>
+        <form class="newsletter-form" action="">
+          <input class="input" type="text" placeholder="Email Address" />
+          <button type="submit" class="btn btn--black">Sign Up</button>
+        </form>
+      </div>
+    </div>
+    <div class="l-padded l-padded--black">
+      <div class="l-constrained">
+        <div class="l-splitflex">
+          <div class="text--white">
+            <nav>
+              <ul class="list list--inline">
+                <li><a href="{{ url('about') }}">About</a></li>
+                <li><a href="{{ url('contact') }}">Contact Us</a></li>
+                <li><a href="{{ url('terms') }}">Terms &amp; Conditions</a></li>
+                <li><a href="{{ url('privacy') }}">Privacy Policy</a></li>
+                <ul class="list list--inline list--inline--tight">
+                  <li><a href="{{ url('about') }}"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="{{ url('contact') }}"><i class="fa fa-instagram"></i></a></li>
+                  <li><a href="{{ url('terms') }}"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="{{ url('privacy') }}"><i class="fa fa-youtube"></i></a></li>
+                </ul>
+              </ul>
+            </nav>
+          </div>
+
+          <span class="text--white text--small">&copy;{{now|date('Y')}} The Reluctant Caregiver</span>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script src="/dist/vendor.min.js"></script>
   <script src="/dist/scripts.min.js"></script>
