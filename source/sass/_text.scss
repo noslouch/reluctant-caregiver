@@ -2,6 +2,19 @@
   letter-spacing: 1px;
 }
 
+.text-tease {
+  color: white;
+  font-weight: 100;
+  letter-spacing: 1.5px;
+  line-height: 24px;
+  font-size: 16px;
+  text-align: center;
+
+  > p {
+    margin: 0;
+  }
+}
+
 .text--small {
   font-size: 12px;
 }
