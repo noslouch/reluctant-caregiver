@@ -1,6 +1,7 @@
 {% extends "_grid" %}
 {% set query = craft.request.getParam('q') %}
 
+{% if query %}
 {% set entries = craft.entries({
   search: query,
   order: 'score',
@@ -13,8 +14,27 @@
   ],
   order: 'score'
 }) %}
+{% endif %}
 
-{% set title = 'Results for ' ~ query %}
+{% if entries is defined and entries | length %}
+  {% set title = 'Results for "' ~ query ~ '"' %}
+{% else %}
+  {% if title is not defined %}
+    {% set title = 'No Results Found for "' ~ query ~ '"' %}
+  {% endif %}
+  {% set otherEntries = craft.entries({
+    section: 'videos',
+    order: 'RAND()',
+    limit: 3,
+    with: [
+    'videoThumbnail',
+    'caregiverThumbnail',
+    'diseaseTag',
+    'insightTag',
+    'relationshipTag'
+    ]
+  }) %}
+{% endif %}
 
 {% block thumbnail %}
   {% if entry.caregiverThumbnail and entry.caregiverThumbnail[0] %}
