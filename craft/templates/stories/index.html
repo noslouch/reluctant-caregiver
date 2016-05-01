@@ -13,7 +13,8 @@
 {% extends "_grid" %}
 {% set title = "Stories" %}
 
-{% set entries = craft.entries.section('videos').with('videoThumbnail', 'diseaseTag', 'insightTag', 'relationshipTag') %}
+{% set entries = craft.entries.section('videos').with('videoThumbnail', 'diseaseTag', 'insightTag', 'relationshipTag', 'caregiver') %}
+{% set caregivers = craft.entries.section('caregivers') %}
 
 {% block thumbnail %}
   {% set thumbnail = entry.videoThumbnail[0] ?? null %}
