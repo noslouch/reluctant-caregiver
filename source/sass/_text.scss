@@ -1,3 +1,11 @@
+.text {
+  letter-spacing: 1px;
+}
+
+.text--medium {
+  font-size: 14px;
+}
+
 .text--white {
   color: white;
 }
@@ -8,6 +16,14 @@
   a:hover {
     color: $orange;
   }
+}
+
+.text--red {
+  color: red;
+}
+
+.text--normalcase {
+  text-transform: capitalize;
 }
 
 .text--aligncenter {

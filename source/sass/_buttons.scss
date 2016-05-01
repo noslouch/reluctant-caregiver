@@ -41,3 +41,17 @@
 .btn--prev {
   left: -85px;
 }
+
+.btn--black {
+  background-color: black;
+  color: white;
+  border: none;
+  outline: none;
+
+  transition: color 125ms ease, background-color 125ms ease;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+}

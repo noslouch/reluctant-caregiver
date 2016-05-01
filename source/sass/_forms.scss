@@ -57,6 +57,8 @@
     border: none;
     border-bottom: 1px solid #111;
     padding: 2px;
+    text-align: center;
+    color: $orange;
 
     &:focus {
       outline: 1px dotted #222;
@@ -73,7 +75,10 @@
   }
 }
 
+.form-row {
+  margin-bottom: 25px;
+}
+
 .label-inline {
   display: block;
-  margin-bottom: 15px;
 }
