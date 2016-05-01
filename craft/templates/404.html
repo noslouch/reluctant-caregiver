@@ -16,11 +16,7 @@
  # http://craftcms.com/docs/routing
  #}
 
-{% extends "_layout" %}
-{% set title = "404" %}
-
-{% block content %}
-	<h1>Page not found</h1>
-
-	<p>What’s worse, a hilarious 404 page can’t be found either.</p>
-{% endblock %}
+{% extends "search/results" %}
+{% set title = "Sorry. The page you're looking for does not exist" %}
+{% set summary = "Here are some random inspirational stories instead." %}
+{% set entries = [] %}
