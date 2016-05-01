@@ -5,6 +5,11 @@
 .thumbnail > a {
   border: none;
   position: relative;
+  display: block;
+
+  &:focus {
+    outline: 1px dotted black;
+  }
 }
 
 .thumbnail-caption {
@@ -28,4 +33,31 @@
   letter-spacing: 1px;
   font-size: 12px;
   text-align: left;
+  position: relative;
+
+  &:after {
+    content: '';
+    vertical-align: middle;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    display: inline-block;
+    margin: 0 0 1px 5px;
+  }
+
+  &:before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -2px;
+    margin: auto;
+    border: 5px solid transparent;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-color: $orange;
+  }
 }
