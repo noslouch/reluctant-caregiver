@@ -1,3 +1,10 @@
 {% extends '_layout' %}
 
-thanks
+{% block content %}
+<div id="content" class="l-constrained l-push">
+  <h1 class="headline headline--large">Thanks {{ craft.request.getQuery('from') }}!</h1>
+  <div class="text text--medium text--gray text--aligncenter">
+    We'll reach out to you soon. In the mean time, use the sign up box below to get notified of updates.
+  </div>
+</div>
+{% endblock %}
