@@ -2,8 +2,12 @@
   letter-spacing: 1px;
 }
 
+.text--small {
+  font-size: 12px;
+}
+
 .text--medium {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .text--white {
@@ -49,6 +53,16 @@
     background-color: $orange;
     margin: 0 auto;
     margin-top: 15px;
+  }
+}
+
+.headline--alt {
+  color: white;
+  font-weight: 100;
+  letter-spacing: 2px;
+
+  &:after {
+    background-color: black;
   }
 }
 

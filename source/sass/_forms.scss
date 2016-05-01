@@ -75,6 +75,25 @@
   }
 }
 
+.newsletter-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+
+  .input {
+    color: white;
+    padding: 10px;
+    width: 100%;
+    max-width: 230px;
+  } 
+
+  .input,
+  .btn {
+    height: 40px;
+  }
+}
+
 .form-row {
   margin-bottom: 25px;
 }

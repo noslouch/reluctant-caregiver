@@ -3,3 +3,18 @@
   padding: 0;
   margin: 0;
 }
+
+.list--inline {
+  > li,
+  ul {
+    display: inline-block;
+  }
+
+  > li {
+    margin-right: 40px;
+  }
+
+  &.list--inline--tight > li {
+    margin-right: 20px;
+  }
+}
