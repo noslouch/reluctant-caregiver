@@ -6,7 +6,10 @@
   border: 1px solid black;
   padding: 8px 15px;
   cursor: pointer;
-  outline: 1px dotted black;
+
+  &:focus {
+    outline: 1px dotted black;
+  }
 }
 
 .btn--gray {
