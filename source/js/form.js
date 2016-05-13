@@ -12,7 +12,7 @@ $(function() {
   }
 
   function validate(field) {
-    let val = $(`input[name=${field}]`).val()
+    let val = $(`input[name=${field}]`).val();
     return !val ? field : null;
   }
 
@@ -57,5 +57,5 @@ $(function() {
     let url = $form.attr('action');
     $.ajax(url, {method: 'POST', data})
       .then(redirect.bind(null, destination));
-  })
+  });
 });
